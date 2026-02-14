@@ -1,0 +1,51 @@
+.business-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 350px;
+}
+
+.business-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+
+  gap: 1rem;
+}
+
+.business-carousel-track > * {
+  flex: 0 0 calc(100% / 4.2);
+}
+
+.next-btn,
+.previous-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgb(243, 241, 241);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.previous-btn {
+  left: 10px;
+}
+
+.next-btn:hover,
+.previous-btn:hover {
+  background: rgb(228, 228, 228);
+}
+
+.business-carousel > button > .fa {
+  color: #0058ff;
+}

@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap");
+
+:root {
+  --primary-bg-600: #f4f2f2;
+  --primary-bg-400: #ffffff;
+
+  --secondary-bg-600: #003caf;
+  --secondary-bg-400: #0058ff;
+  --secondary-bg-200: #cdc2f5;
+  --secondary-bg-100: #e6e1f9;
+
+  --heading-font: "Poppins", sans-serif;
+  --body-font: "Inter", sans-serif;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: var(--primary-bg-400);
+
+  overflow-x: hidden;
+
+  font-family: var(--body-font);
+  background-color: #f9fafb;
+  line-height: 1.6;
+
+  position: relative;
+}
+
+.logo {
+  width: 4rem;
+  height: 5rem;
+}
+
+.fa {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  /* color: #908da6; */
+  color: black;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: #f9fafb;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+button {
+  font-family: var(--heading-font);
+  font-weight: 600;
+
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
