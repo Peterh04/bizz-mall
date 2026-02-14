@@ -247,6 +247,8 @@
   height: 228px;
 
   background: #f1f3f8;
+
+  margin-top: 2rem;
 }
 .clients > .clients-showcase {
   display: flex;
