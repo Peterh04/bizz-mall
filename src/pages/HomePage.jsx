@@ -34,9 +34,9 @@ export default function HomePage() {
   return (
     <main className="home-page" aria-label="Home page">
       <Navbar />
-      <section className="hero-section" aria-label="hero section">
-        <HeroVideo />
-      </section>
+
+      <HeroVideo />
+
       <section
         className="introduction-section"
         aria-label="introduction section"
