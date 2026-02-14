@@ -151,6 +151,8 @@ body {
   font-family: var(--body-font);
   background-color: #f9fafb;
   line-height: 1.6;
+
+  color: #011e45;
 }
 
 h1,
