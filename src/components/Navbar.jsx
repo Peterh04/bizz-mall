@@ -2,6 +2,7 @@ import logo from "../assets/oneLoveClub.png";
 import "../styles/navbar.css";
 import SearchIcon from "../assets/icons/search.svg?react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [show, setShow] = useState(true);
@@ -41,18 +42,38 @@ export default function Navbar() {
       </div>
 
       <div className="nav-menu desktop">
-        <a href="#" aria-label="Home" className="">
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link "
+          }
+        >
           Home
-        </a>
-        <a href="#" aria-label="Shop">
+        </NavLink>
+        <NavLink
+          to={"/shop"}
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           Shop
-        </a>
-        <a href="" aria-label="Contact">
+        </NavLink>
+        <NavLink
+          to={"/contact-us"}
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           Contact
-        </a>
-        <a href="about us" aria-label="About us">
+        </NavLink>
+        <NavLink
+          to={"/about-us"}
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
           About us
-        </a>
+        </NavLink>
       </div>
 
       {menuOpen && (

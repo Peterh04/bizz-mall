@@ -95,7 +95,7 @@
   background-color: transparent;
 }
 
-.nav-menu > a {
+.nav-menu > .nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,10 +106,14 @@
   white-space: nowrap;
 }
 
-.nav-menu > a:hover {
+.nav-menu > .nav-link:hover {
   border-radius: 5px;
   color: var(--secondary-bg-600);
   background-color: var(--primary-bg-600);
+}
+
+.nav-menu > .nav-link.active {
+  color: var(--secondary-bg-600);
 }
 
 .navBar--hidden {
