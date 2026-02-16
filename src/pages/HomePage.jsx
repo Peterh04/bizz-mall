@@ -14,8 +14,10 @@ import CitiLogo from "../assets/icons/citi_logo.svg?react";
 import { useEffect, useState } from "react";
 import StatsSelection from "../components/StatsSelection.jsx";
 import Footer from "../components/Footer.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState("New Listing");
   const [selectedOpportunity, setSelectedOpportunity] = useState("Featured");
   useEffect(() => {
@@ -178,7 +180,7 @@ export default function HomePage() {
             We help turn your dreams of becoming a businness manger and an
             investor.
           </div>
-          <button>CONTACT US</button>
+          <button onClick={() => navigate("/contact-us")}>CONTACT US</button>
         </div>
       </section>
 
