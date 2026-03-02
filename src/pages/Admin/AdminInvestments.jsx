@@ -35,15 +35,19 @@ export default function AdminInvestmentsPage() {
         className="business-preview-container"
         aria-label="business preview container"
       >
-        {businesses.map((business) => (
-          <Business
-            title={business.title}
-            description={business.description}
-            key={business.business_id}
-            coverImageSrc={business.coverImage}
-            id={Number(business.business_id)}
-          />
-        ))}
+        {businesses.length == 0 ? (
+          <p>No investment bussinesses.</p>
+        ) : (
+          businesses.map((business) => (
+            <Business
+              title={business.title}
+              description={business.description}
+              key={business.business_id}
+              coverImageSrc={business.coverImage}
+              id={Number(business.business_id)}
+            />
+          ))
+        )}
       </div>
     </main>
   );

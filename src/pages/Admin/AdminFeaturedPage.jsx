@@ -16,6 +16,7 @@ export default function AdminFeaturedPage() {
             withCredentials: true,
           },
         );
+
         setBusinesses(data.featuredBusinnesses);
       } catch (error) {
         console.error(
@@ -24,7 +25,6 @@ export default function AdminFeaturedPage() {
         );
       }
     };
-
     fetchFeaturedBusinesses();
   }, []);
   return (
@@ -35,15 +35,19 @@ export default function AdminFeaturedPage() {
         className="business-preview-container"
         aria-label="business preview container"
       >
-        {businesses.map((business) => (
-          <Business
-            title={business.title}
-            description={business.description}
-            key={business.business_id}
-            coverImageSrc={business.coverImage}
-            id={Number(business.business_id)}
-          />
-        ))}
+        {businesses.length == 0 ? (
+          <p>No featured bussinesses.</p>
+        ) : (
+          businesses.map((business) => (
+            <Business
+              title={business.title}
+              description={business.description}
+              key={business.business_id}
+              coverImageSrc={business.coverImage}
+              id={Number(business.business_id)}
+            />
+          ))
+        )}
       </div>
     </main>
   );
