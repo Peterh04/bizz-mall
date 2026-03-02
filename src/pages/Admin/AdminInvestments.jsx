@@ -11,7 +11,7 @@ export default function AdminInvestmentsPage() {
     const fetchInvestmentsBusinesses = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/api/business/investments",
+          "https://bizz-mall-backend-production.up.railway.app/api/business/investments",
           {
             withCredentials: true,
           },

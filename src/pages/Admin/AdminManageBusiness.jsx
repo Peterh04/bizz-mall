@@ -25,7 +25,7 @@ export default function AdminManageBusiness() {
     const fetchBusiness = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/api/business/${id}`,
+          `https://bizz-mall-backend-production.up.railway.app/api/business/${id}`,
           {
             withCredentials: true,
           },
@@ -74,9 +74,13 @@ export default function AdminManageBusiness() {
     }
 
     try {
-      await axios.patch(`http://localhost:3001/api/business/${id}`, formData, {
-        withCredentials: true,
-      });
+      await axios.patch(
+        `https://bizz-mall-backend-production.up.railway.app/api/business/${id}`,
+        formData,
+        {
+          withCredentials: true,
+        },
+      );
 
       navigate("/admin/manage-businesses");
     } catch (error) {

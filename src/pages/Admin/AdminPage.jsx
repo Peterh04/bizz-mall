@@ -41,7 +41,7 @@ export default function AdminPage() {
     formData.append("is_investment", form.is_investment);
     try {
       const { data } = await axios.post(
-        "http://localhost:3001/api/business",
+        "https://bizz-mall-backend-production.up.railway.app/api/business",
         formData,
         {
           withCredentials: true,

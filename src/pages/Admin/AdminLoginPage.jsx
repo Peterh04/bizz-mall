@@ -15,7 +15,7 @@ export default function AdminLoginPage() {
     const { email, password } = form;
     try {
       const { data } = await axios.post(
-        `http://localhost:3001/api/auth/login`,
+        `https://bizz-mall-backend-production.up.railway.app/api/auth/login`,
         {
           email,
           password,

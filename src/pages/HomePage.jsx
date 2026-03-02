@@ -39,7 +39,7 @@ export default function HomePage() {
   // useEffect(() => {
   //   const getBusinesses = async () => {
   //     try {
-  //       const { data } = await axios.get(`http://localhost:3001/api/business`);
+  //       const { data } = await axios.get(`https://bizz-mall-backend-production.up.railway.app/api/business`);
   //       setBusinesses(data.businesses);
   //       console.log(data);
   //     } catch (error) {

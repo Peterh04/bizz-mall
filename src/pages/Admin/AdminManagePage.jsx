@@ -10,9 +10,12 @@ export default function AdminManagePage() {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/api/business", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "https://bizz-mall-backend-production.up.railway.app/api/business",
+          {
+            withCredentials: true,
+          },
+        );
         setBusinesses(data.businesses);
       } catch (error) {
         console.error(
