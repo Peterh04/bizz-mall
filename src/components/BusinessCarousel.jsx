@@ -73,14 +73,20 @@ export default function BusinessCarousel() {
   const [startIndex, setStartIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(309);
 
-  // Update pageSize & itemWidth dynamically
   const updateCarousel = () => {
     if (!carouselRef.current) return;
+
     const containerWidth = carouselRef.current.offsetWidth;
-    const widthWithGap = 16 + 309;
-    const itemsFit = Math.floor(containerWidth / widthWithGap);
+    const gap = 16;
+
+    const minItemWidth = 250;
+
+    const itemsFit = Math.floor((containerWidth + gap) / (minItemWidth + gap));
+
+    const calculatedWidth = (containerWidth - gap * (itemsFit - 1)) / itemsFit;
+
     setPageSize(Math.max(1, itemsFit));
-    setItemWidth(containerWidth / Math.max(1, itemsFit) - 16);
+    setItemWidth(calculatedWidth);
   };
 
   useEffect(() => {
@@ -112,15 +118,20 @@ export default function BusinessCarousel() {
           transform: `translateX(-${startIndex * (itemWidth + 16)}px)`,
         }}
       >
-        {businesses.map((business) => (
-          <div>
-            <BusinessPreview
-              businessTitle={business.businessTitle}
-              price={business.price}
-              price_discount={business.price_discount}
-            />
-          </div>
-        ))}
+        {businesses.map((business, index) => {
+          const isLastVisible = index === startIndex + pageSize - 1;
+
+          return (
+            <div key={index} style={{ flex: `0 0 ${itemWidth}px` }}>
+              <BusinessPreview
+                businessTitle={business.businessTitle}
+                price={business.price}
+                price_discount={business.price_discount}
+                isLastVisible={isLastVisible}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {startIndex + pageSize < businesses.length && (

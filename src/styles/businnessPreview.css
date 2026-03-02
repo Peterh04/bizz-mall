@@ -2,16 +2,18 @@
   display: flex;
   flex-direction: column;
 
-  width: 309px;
+  width: 285px;
   height: 280px;
 
   border-radius: 20px;
 
-  padding: 1rem;
+  padding: 0.8rem;
 
   border: 1px solid rgb(239, 235, 235);
 
   cursor: pointer;
+
+  position: relative;
 }
 
 .business-preview:hover {
@@ -22,7 +24,7 @@
   display: flex;
   flex-direction: column;
 
-  width: 277px;
+  width: 260px;
   height: 236px;
 
   gap: 1rem;
@@ -31,7 +33,7 @@
 }
 
 .business-meta > .img-container {
-  width: 277px;
+  width: 258px;
   height: 156px;
 
   border-radius: 12px;
@@ -79,6 +81,99 @@
   font-weight: 300;
   letter-spacing: normal;
   color: #73595c;
+}
+
+.business-description-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -50px;
+
+  width: 309px;
+  min-height: 300px;
+
+  line-height: 22.4px;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: normal;
+
+  border-radius: 10px;
+  padding: 1rem;
+  gap: 25px;
+
+  border: 1px solid rgb(239, 235, 235);
+  background: white;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+
+  z-index: 1000;
+}
+
+.business-description-modal > a {
+  margin-top: 5px;
+}
+
+.business-preview-wrapper:hover .business-description-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.business-preview > .business-description-modal.show {
+  display: flex;
+}
+
+.business-description-modal > .business-highlights > .individual-highlight {
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.individual-highlight > .fa {
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.business-description-modal.right-side {
+  left: 100%;
+  margin-left: 16px;
+}
+
+.business-description-modal.left-side {
+  right: 100%;
+  margin-right: 16px;
+}
+
+.business-description-modal > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+
+  font-family: var(--heading-font);
+  font-size: 1rem;
+  line-height: 1.1rem;
+  letter-spacing: normal;
+  font-weight: 700;
+
+  background: var(--secondary-bg-400);
+  color: white;
+
+  border-radius: 8px;
+}
+
+.business-description-modal > button:hover {
+  background: #003caf;
+}
+
+.business-preview-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 1400px) {

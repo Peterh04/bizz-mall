@@ -112,7 +112,7 @@ export default function HomePage() {
 
         <section
           className="opportunities-category"
-          aria-label="opportunities-category"
+          aria-label="opportunities category"
         >
           <h3>Investment Opportunities</h3>
           <div>
@@ -120,21 +120,13 @@ export default function HomePage() {
             you to venture into, each offering good returns.
           </div>
 
-          <div className="business-selection" aria-label="business selection">
-            <button
-              className={`business-btn ${selectedOpportunity == "Featured" ? "selected" : ""}`}
-              aria-label="business button"
-              onClick={() => setSelectedOpportunity("Featured")}
-            >
-              Client businesses
-            </button>
-            <button
-              className={`business-btn ${selectedOpportunity == "Ours" ? "selected" : ""}`}
-              aria-label="business button"
-              onClick={() => setSelectedOpportunity("Ours")}
-            >
-              Our businesses
-            </button>
+          <BusinessCarousel />
+        </section>
+        <section className="our-businesses" aria-label="our businesses">
+          <h3>Our Businesses</h3>
+          <div>
+            Explore our diverse range of ventures, each built on strong
+            foundations and designed for growth and success.
           </div>
           <BusinessCarousel />
         </section>

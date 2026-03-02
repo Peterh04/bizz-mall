@@ -1,0 +1,19 @@
+.admin-manage-page {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+}
+
+.admin-manage-page > .business-preview-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+
+  background: transparent;
+
+  gap: 1rem;
+}

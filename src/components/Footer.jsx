@@ -5,8 +5,11 @@ import MailIcon from "../assets/icons/mail.svg?react";
 import PhoneIcon from "../assets/icons/phone.svg?react";
 import LocationIcon from "../assets/icons/location.svg?react";
 import DoubleArrow from "../assets/icons/double-arrow.svg?react";
+import { useNavigate } from "react-router-dom";
+useNavigate;
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <footer
       aria-label="footer navbar"
@@ -48,7 +51,13 @@ export default function Footer() {
 
           <div className="info-container" aria-label="info container">
             <DoubleArrow className="fa" />
-            <a>Contact</a>
+            <a
+              onClick={() => {
+                navigate("/contact-us");
+              }}
+            >
+              Contact
+            </a>
           </div>
         </div>
         <div className="map" aria-label="map">
