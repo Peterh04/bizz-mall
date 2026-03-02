@@ -7,17 +7,13 @@ import { useEffect, useState } from "react";
 export default function AdminInvestmentsPage() {
   const [businesses, setBusinesses] = useState([]);
 
-  const accessToken = localStorage.getItem("accessToken");
-
   useEffect(() => {
     const fetchInvestmentsBusinesses = async () => {
       try {
         const { data } = await axios.get(
           "http://localhost:3001/api/business/investments",
           {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
+            withCredentials: true,
           },
         );
         setBusinesses(data.featuredBusinnesses);

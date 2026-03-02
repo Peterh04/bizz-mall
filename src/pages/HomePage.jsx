@@ -10,6 +10,7 @@ import ProcterGamblelogo from "../assets/icons/procter_gamble_logo.svg?react";
 import HewlettLogo from "../assets/icons/hewlett_packard_enterprise_logo.svg?react";
 import EricssonLogo from "../assets/icons/ericsson_logo.svg?react";
 import CitiLogo from "../assets/icons/citi_logo.svg?react";
+import axios from "axios";
 
 import { useEffect, useState } from "react";
 import StatsSelection from "../components/StatsSelection.jsx";
@@ -19,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 export default function HomePage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("New Listing");
+  const [businesses, setBusinesses] = useState([]);
   const [selectedOpportunity, setSelectedOpportunity] = useState("Featured");
   useEffect(() => {
     if (window.instgrm) {
@@ -33,6 +35,23 @@ export default function HomePage() {
       document.body.appendChild(script);
     }
   }, []);
+
+  // useEffect(() => {
+  //   const getBusinesses = async () => {
+  //     try {
+  //       const { data } = await axios.get(`http://localhost:3001/api/business`);
+  //       setBusinesses(data.businesses);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.error(
+  //         `Failed to fetch the business`,
+  //         error.response?.data || error.message,
+  //       );
+  //     }
+  //   };
+
+  //   getBusinesses();
+  // }, []);
   return (
     <main className="home-page" aria-label="Home page">
       <Navbar />

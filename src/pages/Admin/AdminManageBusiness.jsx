@@ -22,15 +22,12 @@ export default function AdminManageBusiness() {
   const { id } = useParams();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
     const fetchBusiness = async () => {
       try {
         const { data } = await axios.get(
           `http://localhost:3001/api/business/${id}`,
           {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
+            withCredentials: true,
           },
         );
         setBusiness(data.business);
@@ -57,8 +54,6 @@ export default function AdminManageBusiness() {
   const handleEditForm = async (e) => {
     e.preventDefault();
 
-    const accessToken = localStorage.getItem("accessToken");
-
     const formData = new FormData();
 
     formData.append("title", form.title);
@@ -80,9 +75,7 @@ export default function AdminManageBusiness() {
 
     try {
       await axios.patch(`http://localhost:3001/api/business/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+        withCredentials: true,
       });
 
       navigate("/admin/manage-businesses");

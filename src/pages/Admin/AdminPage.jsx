@@ -20,8 +20,6 @@ export default function AdminPage() {
     e.preventDefault();
     setLoading(true);
 
-    const accessToken = localStorage.getItem("accessToken");
-
     const formData = new FormData();
     formData.append("title", form.title);
     formData.append("description", form.description);
@@ -46,9 +44,7 @@ export default function AdminPage() {
         "http://localhost:3001/api/business",
         formData,
         {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+          withCredentials: true,
         },
       );
       setForm({

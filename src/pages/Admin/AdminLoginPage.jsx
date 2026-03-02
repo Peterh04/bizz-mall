@@ -20,13 +20,13 @@ export default function AdminLoginPage() {
           email,
           password,
         },
+        { withCredentials: true },
       );
-
-      if (data.user && data.user.role === "admin") {
-        localStorage.setItem("accessToken", data.accessToken);
+      if (data.message.includes("Admin login successfully")) {
         navigate("/admin/");
+      } else {
+        console.error("Not an admin");
       }
-      return;
     } catch (error) {
       console.error("Login Error:", error.response?.data || error.message);
     }

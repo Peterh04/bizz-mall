@@ -7,15 +7,11 @@ import { useEffect, useState } from "react";
 export default function AdminManagePage() {
   const [businesses, setBusinesses] = useState([]);
 
-  const accessToken = localStorage.getItem("accessToken");
-
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
         const { data } = await axios.get("http://localhost:3001/api/business", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+          withCredentials: true,
         });
         setBusinesses(data.businesses);
       } catch (error) {
