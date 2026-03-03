@@ -1,11 +1,29 @@
 import "../styles/adminNavbar.css";
 import logo from "../assets/oneLoveClub.png";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function AdminNavbar() {
   const [show, setShow] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const { data } = await axios.post(
+        "https://bizz-mall-backend-production.up.railway.app/api/auth/logout",
+        {},
+        {
+          withCredentials: true,
+        },
+      );
+      console.log("Sucess logout");
+      navigate("/admin/login");
+    } catch (error) {
+      console.log("Failed to logout", error.response?.data || error.message);
+    }
+  };
 
   return (
     <nav
@@ -55,12 +73,7 @@ export default function AdminNavbar() {
         >
           Investments
         </NavLink>
-        <NavLink
-          to={"/logout"}
-          className={({ isActive }) =>
-            isActive ? "nav-link active" : "nav-link"
-          }
-        >
+        <NavLink className="nav-link" onClick={handleLogout}>
           Logout
         </NavLink>
       </div>
