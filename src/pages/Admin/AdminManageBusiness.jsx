@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AdminNavbar from "../../components/AdminNavbar";
 import "../../styles/adminManageBusiness.css";
+import BinIcon from "../../assets/icons/bin.svg?react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -86,6 +87,24 @@ export default function AdminManageBusiness() {
     } catch (error) {
       console.error(
         "Failed to edit post",
+        error.response?.data || error.message,
+      );
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const { data } = await axios.delete(
+        `https://bizz-mall-backend-production.up.railway.app/api/business/${id}`,
+        {
+          withCredentials: true,
+        },
+      );
+      console.log("Succesfully deleted the business");
+      navigate("/admin/manage-businesses");
+    } catch (error) {
+      console.error(
+        "Failed to delete the business",
         error.response?.data || error.message,
       );
     }
@@ -227,6 +246,14 @@ export default function AdminManageBusiness() {
               Edit POST
             </button>
           )}
+
+          <button
+            className="delete-btn"
+            aria-label="delete button"
+            onClick={handleDelete}
+          >
+            <BinIcon className="fa" />
+          </button>
         </form>
       </section>
     </main>

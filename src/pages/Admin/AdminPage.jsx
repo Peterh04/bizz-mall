@@ -39,6 +39,7 @@ export default function AdminPage() {
     }
     formData.append("is_featured", form.is_featured);
     formData.append("is_investment", form.is_investment);
+    ``;
     try {
       const { data } = await axios.post(
         "https://bizz-mall-backend-production.up.railway.app/api/business",

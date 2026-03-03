@@ -30,6 +30,8 @@
   gap: 0.8rem;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  position: relative;
 }
 
 .edit-business > form > .form-input-conntainer > .image-container {
@@ -62,4 +64,20 @@
   pointer-events: none;
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.edit-business > form > .delete-btn {
+  background: transparent;
+  width: 35px;
+  height: 35px;
+
+  position: absolute;
+
+  top: 25px;
+  right: 5px;
+}
+.delete-btn > .fa {
+  color: red;
+  height: 1.3rem;
+  width: 1.3rem;
 }

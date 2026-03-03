@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lid -->
+  <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Handle -->
+  <path d="M9 6V4H15V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Bin Body -->
+  <rect x="5" y="6" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+  
+  <!-- Inner Lines -->
+  <path d="M10 10V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 10V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>
