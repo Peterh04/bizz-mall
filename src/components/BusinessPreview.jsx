@@ -14,6 +14,7 @@ export default function BusinessPreview({
     "Identify stages of AI application",
     "Deal with AI hallucination",
   ],
+  description = " Complete AI Engineer Training: Python, NLP, Transformers, LLMs",
 }) {
   const navigate = useNavigate();
   return (
@@ -41,7 +42,7 @@ export default function BusinessPreview({
       >
         <a href="">{businessTitle}</a>
 
-        <div className="business-description">{businessTitle}</div>
+        <div className="business-description">{description}</div>
 
         <div className="business-highlights">
           {highlights.map((highlight, index) => (

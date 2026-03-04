@@ -67,6 +67,7 @@ export default function BusinessCarousel({ businesses }) {
                 isLastVisible={isLastVisible}
                 highlights={business.highlights}
                 imgSrc={business.coverImage}
+                description={business.description}
               />
             </div>
           );
