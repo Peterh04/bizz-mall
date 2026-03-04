@@ -11,7 +11,7 @@ export default function AdminFeaturedPage() {
     const fetchFeaturedBusinesses = async () => {
       try {
         const { data } = await axios.get(
-          "https://bizz-mall-backend-production.up.railway.app/api/business?is_feature=true",
+          "https://bizz-mall-backend-production.up.railway.app/api/business?is_featured=true",
           {
             withCredentials: true,
           },
