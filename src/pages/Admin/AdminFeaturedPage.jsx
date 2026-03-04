@@ -17,7 +17,7 @@ export default function AdminFeaturedPage() {
           },
         );
 
-        setBusinesses(data.featuredBusinnesses);
+        setBusinesses(data.businesses);
       } catch (error) {
         console.error(
           "Failed to fetch featured businesses",

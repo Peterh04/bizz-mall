@@ -16,7 +16,7 @@ export default function AdminInvestmentsPage() {
             withCredentials: true,
           },
         );
-        setBusinesses(data.featuredBusinnesses);
+        setBusinesses(data.businesses);
       } catch (error) {
         console.error(
           "Failed to fetch Investments businesses",
