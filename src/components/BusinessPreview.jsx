@@ -9,13 +9,12 @@ export default function BusinessPreview({
   price = 2000,
   price_discount = 3000,
   isLastVisible = false,
-}) {
-  let highlights = [
+  highlights = [
     "Master prompt writing science",
     "Identify stages of AI application",
     "Deal with AI hallucination",
-  ];
-
+  ],
+}) {
   const navigate = useNavigate();
   return (
     <div className="business-preview-wrapper">
@@ -42,9 +41,7 @@ export default function BusinessPreview({
       >
         <a href="">{businessTitle}</a>
 
-        <div className="business-description">
-          Complete AI Engineer Training: Python, NLP, Transformers, LLMs
-        </div>
+        <div className="business-description">{businessTitle}</div>
 
         <div className="business-highlights">
           {highlights.map((highlight, index) => (

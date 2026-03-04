@@ -21,7 +21,60 @@ export default function HomePage() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("New Listing");
   const [businesses, setBusinesses] = useState([]);
-  const [selectedOpportunity, setSelectedOpportunity] = useState("Featured");
+  const [featuredBusinesses, setFeaturedBusinesses] = useState([]);
+  const [investmentBusinesses, setInvestmentBusinesses] = useState([]);
+
+  const hBusiness = [
+    {
+      coverImage: "...",
+      title: "Full Stack JavaScript Bootcamp",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 180000,
+      price_discount: 250000,
+    },
+    {
+      coverImage: "...",
+      title: "React & Modern Frontend Mastery",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 150000,
+      price_discount: 220000,
+    },
+    {
+      coverImage: "...",
+      title: "Node.js & Express Backend Course",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 170000,
+      price_discount: 240000,
+    },
+    {
+      coverImage: "...",
+      title: "MongoDB & Database Design",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 130000,
+      price_discount: 200000,
+    },
+    {
+      coverImage: "...",
+      title: "UI/UX Design for Developers",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 120000,
+      price_discount: 180000,
+    },
+    {
+      coverImage: "...",
+      title: "REST APIs & Authentication with JWT",
+      description: "REST APIs & Authentication with JWT",
+      Highlights: ["REST APIs & Authentication with JWT"],
+      price: 160000,
+      price_discount: 230000,
+    },
+  ];
+
   useEffect(() => {
     if (window.instgrm) {
       window.instgrm.Embeds.process();
@@ -36,22 +89,60 @@ export default function HomePage() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const getBusinesses = async () => {
-  //     try {
-  //       const { data } = await axios.get(`https://bizz-mall-backend-production.up.railway.app/api/business`);
-  //       setBusinesses(data.businesses);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error(
-  //         `Failed to fetch the business`,
-  //         error.response?.data || error.message,
-  //       );
-  //     }
-  //   };
+  useEffect(() => {
+    const getBusinesses = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://bizz-mall-backend-production.up.railway.app/api/business?limit=20`,
+        );
+        setBusinesses(data.businesses);
+      } catch (error) {
+        console.error(
+          `Failed to fetch the business`,
+          error.response?.data || error.message,
+        );
+      }
+    };
 
-  //   getBusinesses();
-  // }, []);
+    getBusinesses();
+  }, []);
+
+  useEffect(() => {
+    const getFeaturedBusinesses = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://bizz-mall-backend-production.up.railway.app/api/business?is_featured=true&limit=20`,
+        );
+        setFeaturedBusinesses(data.businesses);
+      } catch (error) {
+        console.error(
+          `Failed to fetch featured businesses`,
+          error.response?.data || error.message,
+        );
+      }
+    };
+
+    getFeaturedBusinesses();
+  }, []);
+
+  useEffect(() => {
+    const getInvestmentBusinesses = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://bizz-mall-backend-production.up.railway.app/api/business?is_investment=true&limit=20`,
+        );
+
+        setInvestmentBusinesses(data.businesses);
+      } catch (error) {
+        console.error(
+          `Failed to fetch featured businesses`,
+          error.response?.data || error.message,
+        );
+      }
+    };
+
+    getInvestmentBusinesses();
+  }, []);
   return (
     <main className="home-page" aria-label="Home page">
       <Navbar />
@@ -126,7 +217,46 @@ export default function HomePage() {
             </button>
           </div>
 
-          <BusinessCarousel />
+          <BusinessCarousel
+            businesses={[
+              {
+                imgSrc: "...",
+                businessTitle: "Full Stack JavaScript Bootcamp",
+                price: 180000,
+                price_discount: 250000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "React & Modern Frontend Mastery",
+                price: 150000,
+                price_discount: 220000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "Node.js & Express Backend Course",
+                price: 170000,
+                price_discount: 240000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "MongoDB & Database Design",
+                price: 130000,
+                price_discount: 200000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "UI/UX Design for Developers",
+                price: 120000,
+                price_discount: 180000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "REST APIs & Authentication with JWT",
+                price: 160000,
+                price_discount: 230000,
+              },
+            ]}
+          />
         </section>
 
         <section
@@ -139,7 +269,7 @@ export default function HomePage() {
             you to venture into, each offering good returns.
           </div>
 
-          <BusinessCarousel />
+          <BusinessCarousel businesses={investmentBusinesses} />
         </section>
         <section className="our-businesses" aria-label="our businesses">
           <h3>Our Businesses</h3>
@@ -147,7 +277,46 @@ export default function HomePage() {
             Explore our diverse range of ventures, each built on strong
             foundations and designed for growth and success.
           </div>
-          <BusinessCarousel />
+          <BusinessCarousel
+            businesses={[
+              {
+                imgSrc: "...",
+                businessTitle: "Full Stack JavaScript Bootcamp",
+                price: 180000,
+                price_discount: 250000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "React & Modern Frontend Mastery",
+                price: 150000,
+                price_discount: 220000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "Node.js & Express Backend Course",
+                price: 170000,
+                price_discount: 240000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "MongoDB & Database Design",
+                price: 130000,
+                price_discount: 200000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "UI/UX Design for Developers",
+                price: 120000,
+                price_discount: 180000,
+              },
+              {
+                imgSrc: "...",
+                businessTitle: "REST APIs & Authentication with JWT",
+                price: 160000,
+                price_discount: 230000,
+              },
+            ]}
+          />
         </section>
         <section className="clients" aria-label="clients">
           <div className="clients-showcase" aria-label="clients showcase">
