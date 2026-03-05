@@ -144,7 +144,7 @@ export default function AdminPage() {
               type="file"
               id="business-photo"
               required
-              accept="image/*"
+              accept="image/jpeg,image/png,image/gif"
               onChange={(e) => {
                 const file = e.target.files[0];
                 if (file) {
