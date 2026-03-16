@@ -23,6 +23,7 @@ export default function HomePage() {
   const [businesses, setBusinesses] = useState([]);
   const [featuredBusinesses, setFeaturedBusinesses] = useState([]);
   const [investmentBusinesses, setInvestmentBusinesses] = useState([]);
+  const [ourBusinesses, setOurBusinesses] = useState([]);
 
   const hBusiness = [
     {
@@ -142,6 +143,24 @@ export default function HomePage() {
     };
 
     getInvestmentBusinesses();
+  }, []);
+
+  useEffect(() => {
+    const getOurBusinesses = async () => {
+      try {
+        const { data } = await axios.get(
+          `https://bizz-mall-backend-production.up.railway.app/api/business?is_ours=true&limit=20`,
+        );
+        setOurBusinesses(data.businesses);
+      } catch (error) {
+        console.error(
+          `Failed to fetch featured businesses`,
+          error.response?.data || error.message,
+        );
+      }
+    };
+
+    getOurBusinesses();
   }, []);
   return (
     <main className="home-page" aria-label="Home page">
@@ -268,8 +287,17 @@ export default function HomePage() {
             Discover carefully selected businesses opportunities available for
             you to venture into, each offering good returns.
           </div>
-
-          <BusinessCarousel businesses={investmentBusinesses} />
+          {investmentBusinesses.length > 0 ? (
+            <BusinessCarousel businesses={investmentBusinesses} />
+          ) : (
+            <p
+              className="no-businesses-message"
+              aria-label="no businesses message"
+            >
+              There are no investment opportunities available at the moment. New
+              opportunities will be listed here soon.
+            </p>
+          )}
         </section>
         <section className="our-businesses" aria-label="our businesses">
           <h3>Our Businesses</h3>
@@ -277,46 +305,17 @@ export default function HomePage() {
             Explore our diverse range of ventures, each built on strong
             foundations and designed for growth and success.
           </div>
-          <BusinessCarousel
-            businesses={[
-              {
-                imgSrc: "...",
-                businessTitle: "Full Stack JavaScript Bootcamp",
-                price: 180000,
-                price_discount: 250000,
-              },
-              {
-                imgSrc: "...",
-                businessTitle: "React & Modern Frontend Mastery",
-                price: 150000,
-                price_discount: 220000,
-              },
-              {
-                imgSrc: "...",
-                businessTitle: "Node.js & Express Backend Course",
-                price: 170000,
-                price_discount: 240000,
-              },
-              {
-                imgSrc: "...",
-                businessTitle: "MongoDB & Database Design",
-                price: 130000,
-                price_discount: 200000,
-              },
-              {
-                imgSrc: "...",
-                businessTitle: "UI/UX Design for Developers",
-                price: 120000,
-                price_discount: 180000,
-              },
-              {
-                imgSrc: "...",
-                businessTitle: "REST APIs & Authentication with JWT",
-                price: 160000,
-                price_discount: 230000,
-              },
-            ]}
-          />
+          {ourBusinesses.length > 0 ? (
+            <BusinessCarousel businesses={ourBusinesses} />
+          ) : (
+            <p
+              className="no-businesses-message"
+              aria-label="no businesses message"
+            >
+              No businesses to show right now. Please check back soon for
+              updates.
+            </p>
+          )}
         </section>
         <section className="clients" aria-label="clients">
           <div className="clients-showcase" aria-label="clients showcase">
