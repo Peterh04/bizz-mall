@@ -17,6 +17,7 @@ export default function AdminManageBusiness() {
     price: "",
     is_featured: false,
     is_investment: false,
+    is_ours: false,
     coverImage: null,
   });
 
@@ -40,6 +41,7 @@ export default function AdminManageBusiness() {
           price: data.business.price || "",
           is_featured: data.business.is_featured || false,
           is_investment: data.business.is_investment || false,
+          is_ours: data.business.is_ours || false,
         });
       } catch (error) {
         console.error(
@@ -69,6 +71,7 @@ export default function AdminManageBusiness() {
     formData.append("price", form.price);
     formData.append("is_featured", form.is_featured);
     formData.append("is_investment", form.is_investment);
+    formData.append("is_ours", form.is_ours);
 
     if (form.coverImage) {
       formData.append("coverImage", form.coverImage);
@@ -234,12 +237,27 @@ export default function AdminManageBusiness() {
             </label>
           </div>
 
+          <div className="form-input-container">
+            <label className="label">
+              <input
+                type="checkbox"
+                checked={form.is_ours}
+                onChange={(e) => {
+                  setIsEdited(true);
+                  setForm({ ...form, is_ours: e.target.checked });
+                }}
+              />
+              Our business
+            </label>
+          </div>
+
           {form.title !== business.title ||
           form.description !== business.description ||
           form.highlights !== business.highlights.join("\n") ||
           form.price !== business.price ||
           form.is_featured !== business.is_featured ||
-          form.is_investment !== business.is_investment ? (
+          form.is_investment !== business.is_investment ||
+          form.is_ours !== business.is_ours ? (
             <button> Edit POST</button>
           ) : (
             <button disabled className="disable">
